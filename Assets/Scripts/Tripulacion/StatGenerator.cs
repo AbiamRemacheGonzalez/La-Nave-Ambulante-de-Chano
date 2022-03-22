@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class StatGenerator : MonoBehaviour
 {
-    
-
     public Stats Generate()
     {
         return Stats.GenerateStats();

@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class TripulacionSpawnController : MonoBehaviour
 {
-    public Transform[] spawnPoints;
+    public Node[] spawnPoints;
     public ChanoGenerator chanoGenerator;
 
     // Start is called before the first frame update
     void Start()
     {
-        foreach (Transform spawnPoint in spawnPoints)
+        foreach (Node spawnPoint in spawnPoints)
         {
             GameObject chano = chanoGenerator.Generate();
-            chano.transform.position = spawnPoint.position;
+            chano.GetComponent<Chano>().SetNode(spawnPoint);
+            chano.transform.position = spawnPoint.gameObject.transform.position;
         }
     }
 
