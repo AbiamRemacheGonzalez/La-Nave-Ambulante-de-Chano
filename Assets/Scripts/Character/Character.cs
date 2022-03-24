@@ -54,4 +54,6 @@ public abstract class Character : MonoBehaviour
         }
         return null;
     }
+
+    protected abstract IEnumerator Move(Node[] path);
 }

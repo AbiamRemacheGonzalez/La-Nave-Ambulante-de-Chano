@@ -10,10 +10,7 @@ public class Chano : Character
     {
         Node[] path = FindPath(node);
 
-        foreach(Node n in path)
-        {
-            Debug.Log(n.gameObject);
-        }
+        StartCoroutine(Move(path));
     }
 
     public void SetStats(Stats stats)
@@ -24,5 +21,22 @@ public class Chano : Character
     public Stats GetStats()
     {
         return stats;
+    }
+
+    protected override IEnumerator Move(Node[] path)
+    {
+        currentNode.SetOccupied(false);
+        foreach (Node n in path)
+        {
+            currentNode = n;
+            while (transform.position != n.transform.position)
+            {
+                float step = stats.GetSpeed() * Time.deltaTime;
+                transform.position = Vector3.MoveTowards(transform.position, n.transform.position, step);
+                yield return new WaitForEndOfFrame();
+            }
+            yield return new WaitForEndOfFrame();
+        }
+        currentNode.SetOccupied(true);
     }
 }
