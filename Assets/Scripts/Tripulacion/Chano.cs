@@ -8,7 +8,12 @@ public class Chano : Character
 
     public override void MoveTo(Node node)
     {
-        
+        Node[] path = FindPath(node);
+
+        foreach(Node n in path)
+        {
+            Debug.Log(n.gameObject);
+        }
     }
 
     public void SetStats(Stats stats)
