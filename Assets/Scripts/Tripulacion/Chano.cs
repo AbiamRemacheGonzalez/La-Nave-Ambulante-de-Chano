@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -42,7 +43,18 @@ public class Chano : Character
             yield return new WaitForEndOfFrame();
         }
         currentNode.SetOccupied(true);
+        StartCoroutine(CheckTask());
         isMoving = false;
         anim.SetBool("isMoving", isMoving);
+    }
+
+    private IEnumerator CheckTask()
+    {
+        Tarea tarea = currentNode.GetTarea();
+        if (tarea != null) {
+            tarea.DoTask();
+            //subir estadistica
+        }
+        yield return new WaitForEndOfFrame();
     }
 }
