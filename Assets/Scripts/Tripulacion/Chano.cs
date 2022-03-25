@@ -5,6 +5,7 @@ using UnityEngine;
 public class Chano : Character
 {
     private Stats stats;
+    public Animator anim;
 
     public override void MoveTo(Node node)
     {
@@ -27,6 +28,7 @@ public class Chano : Character
     protected override IEnumerator Move(Node[] path)
     {
         isMoving = true;
+        anim.SetBool("isMoving", isMoving);
         currentNode.SetOccupied(false);
         foreach (Node n in path)
         {
@@ -41,5 +43,6 @@ public class Chano : Character
         }
         currentNode.SetOccupied(true);
         isMoving = false;
+        anim.SetBool("isMoving", isMoving);
     }
 }
