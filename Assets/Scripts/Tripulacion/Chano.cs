@@ -10,7 +10,8 @@ public class Chano : Character
     {
         Node[] path = FindPath(node);
 
-        StartCoroutine(Move(path));
+        if(!isMoving)
+            StartCoroutine(Move(path));
     }
 
     public void SetStats(Stats stats)
@@ -25,6 +26,7 @@ public class Chano : Character
 
     protected override IEnumerator Move(Node[] path)
     {
+        isMoving = true;
         currentNode.SetOccupied(false);
         foreach (Node n in path)
         {
@@ -38,5 +40,6 @@ public class Chano : Character
             yield return new WaitForEndOfFrame();
         }
         currentNode.SetOccupied(true);
+        isMoving = false;
     }
 }

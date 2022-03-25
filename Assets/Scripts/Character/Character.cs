@@ -7,6 +7,8 @@ public abstract class Character : MonoBehaviour
 
     protected Node currentNode;
 
+    protected bool isMoving = false;
+
     // Start is called before the first frame update
     void Start()
     {
