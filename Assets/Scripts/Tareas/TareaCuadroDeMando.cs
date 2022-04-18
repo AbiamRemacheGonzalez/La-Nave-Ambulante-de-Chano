@@ -13,6 +13,6 @@ public class TareaCuadroDeMando : Tarea
 
     public override void DisplayInfo()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Se esta usando los motores");
     }
 }

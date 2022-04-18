@@ -22,6 +22,7 @@ public class MouseController : MonoBehaviour
 
             if (hit.collider != null)
             {
+                Debug.Log(hit.collider.name);
                 NodeRegion region = hit.collider.gameObject.GetComponent<NodeRegion>();
                 if (region != null && selectedCharacter != null)
                 {
@@ -44,6 +45,7 @@ public class MouseController : MonoBehaviour
 
             if (hit.collider != null)
             {
+                Debug.Log(hit.collider.name);
                 Chano character = hit.collider.gameObject.GetComponent<Chano>();
                 if(character != null)
                 {

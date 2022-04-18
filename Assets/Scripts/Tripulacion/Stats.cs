@@ -48,7 +48,7 @@ public class Stats
 
     public Stats()
     {
-        speed = 1;
+        speed = 5;
         piloting = 0;
         repairing = 0;
         shooting = 0;

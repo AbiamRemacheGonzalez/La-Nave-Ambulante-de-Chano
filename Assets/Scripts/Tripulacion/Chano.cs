@@ -43,9 +43,9 @@ public class Chano : Character
             yield return new WaitForEndOfFrame();
         }
         currentNode.SetOccupied(true);
-        StartCoroutine(CheckTask());
         isMoving = false;
         anim.SetBool("isMoving", isMoving);
+        StartCoroutine(CheckTask());
     }
 
     private IEnumerator CheckTask()

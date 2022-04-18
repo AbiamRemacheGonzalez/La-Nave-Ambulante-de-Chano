@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4505918977890580884}
   - component: {fileID: 3657844636227049613}
   - component: {fileID: 7225144025582598650}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Chano
   m_TagString: Untagged
   m_Icon: {fileID: 0}
