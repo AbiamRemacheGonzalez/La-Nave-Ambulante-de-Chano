@@ -18,20 +18,23 @@ public class MouseController : MonoBehaviour
     {
         if (Input.GetButtonDown("RightClick"))
         {
-            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+            RaycastHit2D[] hits = Physics2D.RaycastAll(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
 
-            if (hit.collider != null)
+            foreach (RaycastHit2D hit in hits)
             {
-                NodeRegion region = hit.collider.gameObject.GetComponent<NodeRegion>();
-                if (region != null && selectedCharacter != null)
+                if (hit.collider != null)
                 {
-                    foreach(Node n in region.GetNodes())
+                    NodeRegion region = hit.collider.gameObject.GetComponent<NodeRegion>();
+                    if (region != null && selectedCharacter != null)
                     {
-                        if (!n.IsOccupied())
+                        foreach (Node n in region.GetNodes())
                         {
-                            selectedCharacter.MoveTo(n);
-                            n.SetOccupied(true);
-                            break;
+                            if (!n.IsOccupied())
+                            {
+                                selectedCharacter.MoveTo(n);
+                                n.SetOccupied(true);
+                                break;
+                            }
                         }
                     }
                 }
@@ -40,19 +43,22 @@ public class MouseController : MonoBehaviour
 
         if (Input.GetButtonDown("LeftClick"))
         {
-            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+            RaycastHit2D[] hits = Physics2D.RaycastAll(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
 
-            if (hit.collider != null)
+            foreach (RaycastHit2D hit in hits)
             {
-                Chano character = hit.collider.gameObject.GetComponent<Chano>();
-                if(character != null)
+                if (hit.collider != null)
                 {
-                    selectedCharacter = character;
+                    Chano character = hit.collider.gameObject.GetComponent<Chano>();
+                    if (character != null)
+                    {
+                        selectedCharacter = character;
+                    }
                 }
-            }
-            else
-            {
-                selectedCharacter = null;
+                else
+                {
+                    selectedCharacter = null;
+                }
             }
         }
     }
