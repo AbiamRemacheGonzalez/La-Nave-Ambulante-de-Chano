@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TareaDefensas : Tarea
+public class SistemaOxigeno : SystemBase
 {
     public override void DisplayInfo()
     {
@@ -11,7 +11,14 @@ public class TareaDefensas : Tarea
 
     public override void DoTask()
     {
-        Debug.Log("Se esta usando el sistema de defensa.");
+        if (life < maxLife)
+        {
+            Repair();
+        }
+        else
+        {
+            Debug.Log("Se esta usando la tarea oxigeno");
+        }
     }
 
 }

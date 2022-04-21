@@ -2,17 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TareaCuadroDeMando : Tarea
+public class SistemaCuadroDeMando : SystemBase
 {
     public GameObject cuadroDeMando;
 
     public override void DoTask()
     {
-        cuadroDeMando.SetActive(true);
+        if (life < maxLife)
+        {
+            Repair();
+        }
+        else
+        {
+            cuadroDeMando.SetActive(true);
+        }
     }
 
     public override void DisplayInfo()
     {
-        Debug.Log("Se esta usando los motores");
+        
     }
 }

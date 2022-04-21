@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TareaMotores : Tarea
+public class SistemaMotores : SystemBase
 {
     public override void DisplayInfo()
     {
@@ -11,6 +11,13 @@ public class TareaMotores : Tarea
 
     public override void DoTask()
     {
-        Debug.Log("Se esta usando los motores");
+        if (life < maxLife)
+        {
+            Repair();
+        }
+        else
+        {
+            Debug.Log("Se esta usando los motores");
+        }
     }
 }
