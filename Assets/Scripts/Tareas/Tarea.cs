@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Tarea : MonoBehaviour
 {
-    public abstract void DoTask();
+    public abstract void DoTask(Chano chano);
     public abstract void DisplayInfo();
 
 }

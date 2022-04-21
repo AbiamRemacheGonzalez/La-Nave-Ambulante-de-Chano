@@ -17,9 +17,15 @@ public abstract class SystemBase : Tarea
         life = (newLife > maxLife) ? maxLife : (newLife < 0) ? 0 : newLife;
     }
 
-    public void Repair()
+    public virtual void TakeDamage(int damage)
+    {
+        this.life = ((this.life - damage) < 0) ? 0 : this.life - damage;
+    }
+
+    public void Repair(Chano chano)
     {
         life = maxLife;
-        DoTask();
+        chano.GetStats().SetRepairing(chano.GetStats().GetRepairing() + 1);
+        DoTask(chano);
     }
 }

@@ -5,16 +5,19 @@ using UnityEngine;
 public class SistemaCuadroDeMando : SystemBase
 {
     public GameObject cuadroDeMando;
+    public static float currentPilotingStat;
 
-    public override void DoTask()
+    public override void DoTask(Chano chano)
     {
         if (life < maxLife)
         {
-            Repair();
+            Repair(chano);
         }
         else
         {
+            currentPilotingStat = chano.GetStats().GetPiloting();
             cuadroDeMando.SetActive(true);
+            chano.GetStats().SetPiloting(chano.GetStats().GetPiloting() + 1);
         }
     }
 
