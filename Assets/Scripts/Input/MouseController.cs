@@ -10,7 +10,7 @@ public class MouseController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -22,7 +22,13 @@ public class MouseController : MonoBehaviour
 
             foreach (RaycastHit2D hit in hits)
             {
+<<<<<<< HEAD
                 if (hit.collider != null)
+=======
+                Debug.Log(hit.collider.name);
+                NodeRegion region = hit.collider.gameObject.GetComponent<NodeRegion>();
+                if (region != null && selectedCharacter != null)
+>>>>>>> origin/abiam-develop
                 {
                     NodeRegion region = hit.collider.gameObject.GetComponent<NodeRegion>();
                     if (region != null && selectedCharacter != null)
@@ -47,7 +53,13 @@ public class MouseController : MonoBehaviour
 
             foreach (RaycastHit2D hit in hits)
             {
+<<<<<<< HEAD
                 if (hit.collider != null)
+=======
+                Debug.Log(hit.collider.name);
+                Chano character = hit.collider.gameObject.GetComponent<Chano>();
+                if(character != null)
+>>>>>>> origin/abiam-develop
                 {
                     Chano character = hit.collider.gameObject.GetComponent<Chano>();
                     if (character != null)

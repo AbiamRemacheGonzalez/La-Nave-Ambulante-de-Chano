@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TareaCuadroDeMando : MonoBehaviour
+public class TareaCuadroDeMando : Tarea
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject cuadroDeMando;
+
+    public override void DoTask()
     {
-        
+        cuadroDeMando.SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void DisplayInfo()
     {
-        
+        Debug.Log("Se esta usando los motores");
     }
 }
