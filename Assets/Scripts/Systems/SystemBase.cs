@@ -20,6 +20,7 @@ public abstract class SystemBase : Tarea
     public void Repair()
     {
         life = maxLife;
+        Debug.Log("Se esta reparando");
         DoTask();
     }
 }
