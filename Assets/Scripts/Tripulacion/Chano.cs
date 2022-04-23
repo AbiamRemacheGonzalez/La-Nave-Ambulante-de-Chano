@@ -7,6 +7,18 @@ public class Chano : Character
 {
     private Stats stats;
     public Animator anim;
+    protected int life = 10;
+
+    public void SetLife(int life)
+    {
+        this.life = life;
+        if (this.life <= 0) Die();
+    }
+
+    public void Die()
+    {
+        Destroy(this.gameObject);
+    }
 
     public override void MoveTo(Node node)
     {
@@ -52,7 +64,7 @@ public class Chano : Character
     {
         Tarea tarea = currentNode.GetTarea();
         if (tarea != null) {
-            tarea.DoTask();
+            tarea.DoTask(this);
             //subir estadistica
         }
         yield return new WaitForEndOfFrame();
