@@ -10,18 +10,10 @@ public class SistemaDefensas : SystemBase
         throw new System.NotImplementedException();
     }
 
-    public override void DoTask(Chano chano)
+    protected override void Task(Chano chano)
     {
-        if (life < maxLife)
-        {
-            Repair(chano);
-        }
-        else
-        {
-            currentShootingStat = chano.GetStats().GetShooting();
-            Debug.Log("Se esta usando el sistema de defensa.");
-            chano.GetStats().SetShooting(chano.GetStats().GetShooting() + 1);
-        }
+        currentShootingStat = chano.GetStats().GetShooting();
+        Debug.Log("Se esta usando el sistema de defensa.");
+        chano.GetStats().SetShooting(chano.GetStats().GetShooting() + 1);
     }
-
 }

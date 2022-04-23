@@ -19,8 +19,23 @@ public abstract class SystemBase : Tarea
 
     public virtual void TakeDamage(int damage)
     {
-        this.life = ((this.life - damage) < 0) ? 0 : this.life - damage;
+        life = ((life - damage) < 0) ? 0 : life - damage;
     }
+
+    public override void DoTask(Chano chano)
+    {
+        if (life < maxLife)
+        {
+            Repair(chano);
+        }
+        else
+        {
+            Task(chano);
+            TakeDamage(1);
+        }
+    }
+
+    protected abstract void Task(Chano chano);
 
     public void Repair(Chano chano)
     {

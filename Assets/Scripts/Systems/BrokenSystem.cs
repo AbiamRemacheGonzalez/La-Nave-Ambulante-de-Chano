@@ -9,16 +9,9 @@ public class BrokenSystem : SystemBase
         throw new System.NotImplementedException();
     }
 
-    public override void DoTask()
+    protected override void Task(Chano chano)
     {
-        if (life < maxLife)
-        {
-            Repair();
-        }
-        else
-        {
-            Debug.Log("Se esta usando la tarea rota");
-        }
+        Debug.Log("Se esta usando la tarea rota");
     }
 
     // Start is called before the first frame update

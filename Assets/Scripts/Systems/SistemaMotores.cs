@@ -10,17 +10,10 @@ public class SistemaMotores : SystemBase
         throw new System.NotImplementedException();
     }
 
-    public override void DoTask(Chano chano)
+    protected override void Task(Chano chano)
     {
-        if (life < maxLife)
-        {
-            Repair(chano);
-        }
-        else
-        {
-            currentEngineeringStat = chano.GetStats().GetEngineering();
-            Debug.Log("Se esta usando los motores");
-            chano.GetStats().SetEngineering(chano.GetStats().GetEngineering() + 1);
-        }
+        currentEngineeringStat = chano.GetStats().GetEngineering();
+        Debug.Log("Se esta usando los motores");
+        chano.GetStats().SetEngineering(chano.GetStats().GetEngineering() + 1);
     }
 }

@@ -30,17 +30,9 @@ public class SistemaOxigeno : SystemBase
         throw new System.NotImplementedException();
     }
 
-    public override void DoTask(Chano chano)
+    protected override void Task(Chano chano)
     {
-        if (life < maxLife)
-        {
-            Repair(chano);
-        }
-        else
-        {
-            oxigenLevel = 100;
-            Debug.Log("Se esta usando la tarea oxigeno");
-        }
+        oxigenLevel = 100;
+        Debug.Log("Se esta usando la tarea oxigeno");
     }
-
 }
