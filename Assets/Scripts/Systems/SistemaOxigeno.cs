@@ -19,6 +19,7 @@ public class SistemaOxigeno : SystemBase
     {
         life = ((life - damage) < 0) ? 0 : life - damage;
         oxigenLevel = ((oxigenLevel - damage * 10) < 0) ? 0 : oxigenLevel - damage * 10;
+        oxygenSlider.value = oxigenLevel;
         if(oxigenLevel <= 0)
         {
             GameObject [] chanos = GameObject.FindGameObjectsWithTag("Chano");
@@ -41,6 +42,7 @@ public class SistemaOxigeno : SystemBase
     protected override void Task(Chano chano)
     {
         oxigenLevel = 100;
+        oxygenSlider.value = oxigenLevel;
         Debug.Log("Se esta usando la tarea oxigeno");
     }
 }

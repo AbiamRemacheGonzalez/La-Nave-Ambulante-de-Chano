@@ -7,6 +7,8 @@ public abstract class SystemBase : Tarea
     protected int life = 10;
     public const int maxLife = 10;
 
+    private int count = 0;
+
     public int GetLife()
     {
         return life;
@@ -31,7 +33,15 @@ public abstract class SystemBase : Tarea
         else
         {
             Task(chano);
-            TakeDamage(1);
+            if(count >= 10)
+            {
+                TakeDamage(1);
+                count = 0;
+            }
+            else
+            {
+                count += Random.Range(1, 4);
+            }
         }
     }
 
