@@ -7,17 +7,41 @@ public class Chano : Character
 {
     private Stats stats;
     public Animator anim;
+    public GameObject lifeBarObject;
+    protected int maxLife = 10;
     protected int life = 10;
 
-    public void SetLife(int life)
+    private LifeBarController lifeBar;
+
+    void Start()
     {
-        this.life = life;
-        if (this.life <= 0) Die();
+        lifeBar = lifeBarObject.GetComponent<LifeBarController>();
+        lifeBar.SetValuesTo(maxLife);
+        lifeBarObject.SetActive(false);
+    }
+
+    public void SetLife(int newLifeValue)
+    {
+        life = (newLifeValue > maxLife) ? maxLife : (newLifeValue < 0) ? 0 : newLifeValue;
+        if (life < maxLife) {
+            lifeBarObject.SetActive(true);
+        }
+        else
+        {
+            lifeBarObject.SetActive(false);
+        }
+        lifeBar.SetLife(life);
+        if (life <= 0) Die();
+    }
+
+    public int GetLife()
+    {
+        return life;
     }
 
     public void Die()
     {
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
 
     public override void MoveTo(Node node)
