@@ -13,6 +13,11 @@ public abstract class Character : MonoBehaviour
         currentNode = node;
     }
 
+    public bool IsMoving()
+    {
+        return isMoving;
+    }
+
     public abstract void MoveTo(Node node);
 
     protected Node[] FindPath(Node nodeToGo)

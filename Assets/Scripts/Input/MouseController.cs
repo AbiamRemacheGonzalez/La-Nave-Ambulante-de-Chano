@@ -25,7 +25,7 @@ public class MouseController : MonoBehaviour
                 if (hit.collider != null)
                 {
                     NodeRegion region = hit.collider.gameObject.GetComponent<NodeRegion>();
-                    if (region != null && selectedCharacter != null)
+                    if (region != null && selectedCharacter != null && !selectedCharacter.IsMoving())
                     {
                         foreach (Node n in region.GetNodes())
                         {
