@@ -5,12 +5,14 @@ using UnityEngine;
 public class MouseController : MonoBehaviour
 {
 
+    private SelectedController selectedController;
+
     private Character selectedCharacter;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        selectedController = GetComponent<SelectedController>();
     }
 
     // Update is called once per frame
@@ -53,11 +55,13 @@ public class MouseController : MonoBehaviour
                     if (character != null)
                     {
                         selectedCharacter = character;
+                        selectedController.SetSelected(hit.collider.gameObject);
                     }
                 }
                 else
                 {
                     selectedCharacter = null;
+                    selectedController.UnsetSelected();
                 }
             }
         }
