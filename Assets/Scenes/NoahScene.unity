@@ -1063,7 +1063,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59e4e6386141c984b99d799d85917dac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oxygenSlider: {fileID: 0}
+  oxygenSlider: {fileID: 1401828202}
 --- !u!1 &589476595
 GameObject:
   m_ObjectHideFlags: 0
