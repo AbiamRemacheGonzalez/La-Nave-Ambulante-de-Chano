@@ -9,8 +9,9 @@ public class SistemaOxigeno : SystemBase
     protected float maxOxigenLevel = 100;
     public Slider oxygenSlider;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         oxygenSlider.maxValue = maxOxigenLevel;
         oxygenSlider.value = oxigenLevel;
     }
@@ -27,6 +28,7 @@ public class SistemaOxigeno : SystemBase
                 chano.GetComponent<Chano>().SetLife(0);
             }
         }
+        UpdateLifeBar();
     }
 
     public float GetOxigenLevel()

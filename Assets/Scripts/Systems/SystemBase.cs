@@ -6,24 +6,47 @@ public abstract class SystemBase : Tarea
 {
     protected int life = 10;
     public const int maxLife = 10;
+    public GameObject lifeBarObject;
+    private LifeBarController lifeBar;
 
     private int count = 0;
+
+    protected virtual void Start()
+    {
+        lifeBar = lifeBarObject.GetComponent<LifeBarController>();
+        lifeBar.SetValuesTo(maxLife);
+        lifeBarObject.SetActive(false);
+    }
 
     public int GetLife()
     {
         return life;
     }
 
-    public void Setlife(int newLife)
+    public void SetLife(int newLife)
     {
         life = (newLife > maxLife) ? maxLife : (newLife < 0) ? 0 : newLife;
+        UpdateLifeBar();
     }
 
     public virtual void TakeDamage(int damage)
     {
         life = ((life - damage) < 0) ? 0 : life - damage;
+        UpdateLifeBar();
     }
 
+    protected void UpdateLifeBar()
+    {
+        if (life < maxLife)
+        {
+            lifeBarObject.SetActive(true);
+        }
+        else
+        {
+            lifeBarObject.SetActive(false);
+        }
+        lifeBar.SetLife(life);
+    }
     public override void DoTask(Chano chano)
     {
         if (life < maxLife)
@@ -33,7 +56,7 @@ public abstract class SystemBase : Tarea
         else
         {
             Task(chano);
-            if(count >= 10)
+            if (count >= 5)
             {
                 TakeDamage(1);
                 count = 0;
@@ -49,7 +72,7 @@ public abstract class SystemBase : Tarea
 
     public void Repair(Chano chano)
     {
-        life = maxLife;
+        SetLife(maxLife);
         Debug.Log("Se esta reparando");
         chano.GetStats().SetRepairing(chano.GetStats().GetRepairing() + 1);
         DoTask(chano);
