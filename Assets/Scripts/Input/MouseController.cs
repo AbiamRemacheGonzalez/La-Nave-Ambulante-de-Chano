@@ -9,6 +9,8 @@ public class MouseController : MonoBehaviour
 
     private Character selectedCharacter;
 
+    public StatPanelController statPanel;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,12 +58,14 @@ public class MouseController : MonoBehaviour
                     {
                         selectedCharacter = character;
                         selectedController.SetSelected(hit.collider.gameObject);
+                        statPanel.Configure(character);
                     }
                 }
                 else
                 {
                     selectedCharacter = null;
                     selectedController.UnsetSelected();
+                    statPanel.TurnOff();
                 }
             }
         }
