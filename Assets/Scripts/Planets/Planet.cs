@@ -2,17 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Planet : MonoBehaviour
+public class Planet
 {
-    // Start is called before the first frame update
-    void Start()
+    protected string planetName;
+    protected Vector2 position;
+
+    public Planet(string name, Vector2 pos)
     {
-        
+        planetName = name;
+        position = pos;
     }
 
-    // Update is called once per frame
-    void Update()
+    public string GetName()
     {
-        
+        return planetName;
+    }
+
+    public Vector2 GetPosition()
+    {
+        return position;
+    }
+
+    public float DistanceFrom(Planet planet)
+    {
+        return (position - planet.GetPosition()).magnitude * 100;
     }
 }

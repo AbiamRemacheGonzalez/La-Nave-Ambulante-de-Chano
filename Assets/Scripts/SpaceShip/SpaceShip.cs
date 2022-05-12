@@ -5,10 +5,20 @@ using UnityEngine.UI;
 
 public class SpaceShip : MonoBehaviour
 {
+    public static SpaceShip instance;
+
     protected List<SystemBase> systems;
     protected float fuel = 100;
     public const int maxFuel = 100;
     public Slider fuelSlider;
+
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+    }
 
     private void Start()
     {
@@ -21,15 +31,15 @@ public class SpaceShip : MonoBehaviour
         return fuel;
     }
 
-    public void AddFuel(float fuel)
+    public void AddFuel(float fuelToAdd)
     {
-        this.fuel = ((this.fuel+fuel) > maxFuel) ? maxFuel : this.fuel+fuel;
+        fuel = ((fuel + fuelToAdd) > maxFuel) ? maxFuel : fuel + fuelToAdd;
         fuelSlider.value = fuel;
     }
 
-    public void RemoveFuel(float fuel)
+    public void RemoveFuel(float fuelToRemove)
     {
-        this.fuel = ((this.fuel - fuel) < 0) ? 0 : this.fuel - fuel;
+        fuel = ((fuel - fuelToRemove) < 0) ? 0 : fuel - fuelToRemove;
         fuelSlider.value = fuel;
     }
 

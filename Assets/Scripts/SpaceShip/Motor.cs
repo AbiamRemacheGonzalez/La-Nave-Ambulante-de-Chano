@@ -10,7 +10,7 @@ public class Motor : MonoBehaviour
 
     public void SetPower(float power)
     {
-        this.currentPower = (power <= maxPower) ? power:maxPower;
+        currentPower = (power <= maxPower) ? power : maxPower;
     }
     public float GetPower()
     {
