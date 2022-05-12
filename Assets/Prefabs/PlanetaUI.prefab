@@ -523,7 +523,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 706171846862626160}
-        m_MethodName: ClickClose
+        m_MethodName: ClickTravel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -558,3 +558,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToClose: {fileID: 9011370843962301632}
+  anim: {fileID: 0}

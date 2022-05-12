@@ -5,7 +5,16 @@ using UnityEngine;
 public class Close : MonoBehaviour
 {
     public GameObject objectToClose;
-    public void ClickClose() {
+    [SerializeField]
+    private Animator anim;
+
+    private void Start()
+    {
+        anim = GameObject.Find("Espacio").GetComponent<Animator>();
+    }
+
+    public void ClickTravel() {
+        anim.SetBool("isTravelling", true);
         objectToClose.SetActive(false);
     }
 }
