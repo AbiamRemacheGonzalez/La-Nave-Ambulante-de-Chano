@@ -8,6 +8,8 @@ public class NavegationController : MonoBehaviour
 
     public GameObject navUI;
 
+    public Animator anim;
+
     private Planet currentPlanet;
     private Planet destination;
 
@@ -60,15 +62,15 @@ public class NavegationController : MonoBehaviour
         isTraveling = true;
         float distance = currentPlanet.DistanceFrom(destination);
 
-        // TODO: start anim moving
+        anim.SetBool("isTravelling", true);
 
-        for(int i = 1; i <= distance; i++)
+        for (int i = 1; i <= distance; i++)
         {
             yield return new WaitForSeconds(1);
             Debug.Log(i + "/" + distance);
         }
 
-        // TODO: stop anim moving
+        anim.SetBool("isTravelling", false);
 
         SetCurrentPlanet(destination);
         isTraveling = false;

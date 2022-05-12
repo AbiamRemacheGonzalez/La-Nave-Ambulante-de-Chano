@@ -4903,6 +4903,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   navUI: {fileID: 215256152}
+  anim: {fileID: 1554711655}
 --- !u!1 &1288533965
 GameObject:
   m_ObjectHideFlags: 0
