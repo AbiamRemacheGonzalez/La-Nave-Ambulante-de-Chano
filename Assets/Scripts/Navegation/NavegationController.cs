@@ -6,6 +6,8 @@ public class NavegationController : MonoBehaviour
 {
     public static NavegationController instance;
 
+    public EventsManager eventsManager;
+
     public GameObject navUI;
 
     public Animator anim;
@@ -14,6 +16,9 @@ public class NavegationController : MonoBehaviour
     private Planet destination;
 
     private bool isTraveling = false;
+
+    private bool eventIsOn = false;
+    private bool thereWasEvent = false;
 
     // Start is called before the first frame update
     void Start()
@@ -64,16 +69,39 @@ public class NavegationController : MonoBehaviour
 
         anim.SetBool("isTravelling", true);
 
+        float quarter = distance / 4;
+        thereWasEvent = false;
+
         for (int i = 1; i <= distance; i++)
         {
             yield return new WaitForSeconds(1);
             Debug.Log(i + "/" + distance);
+            if(!thereWasEvent && i % quarter == 0)
+            {
+                if (Random.value > 0.75f)
+                {
+                    anim.SetBool("isTravelling", false);
+                    eventsManager.StartEvent(this);
+                    eventIsOn = true;
+                    while (eventIsOn)
+                    {
+                        yield return null;
+                    }
+                    thereWasEvent = true;
+                    anim.SetBool("isTravelling", true);
+                }
+            }
         }
 
         anim.SetBool("isTravelling", false);
 
         SetCurrentPlanet(destination);
         isTraveling = false;
+    }
+
+    public void ResumeTravel()
+    {
+        eventIsOn = false;
     }
 
 }

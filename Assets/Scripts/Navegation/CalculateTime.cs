@@ -27,7 +27,7 @@ public class CalculateTime : MonoBehaviour
             return;
         }
 
-        float dist = (planet.GetPosition() - currentPlanet.GetPosition()).magnitude * 100f;
+        float dist = currentPlanet.DistanceFrom(planet);
         DistanceName.text = dist + " Años luz";
         TimeName.text = dist + " Seg";
     }

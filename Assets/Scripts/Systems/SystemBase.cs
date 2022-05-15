@@ -13,6 +13,7 @@ public abstract class SystemBase : Tarea
 
     protected virtual void Start()
     {
+        SpaceShip.instance.AddSystem(this);
         lifeBar = lifeBarObject.GetComponent<LifeBarController>();
         lifeBar.SetValuesTo(maxLife);
         lifeBarObject.SetActive(false);

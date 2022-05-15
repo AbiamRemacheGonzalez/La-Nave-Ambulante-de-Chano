@@ -25,6 +25,6 @@ public class Planet
 
     public float DistanceFrom(Planet planet)
     {
-        return (position - planet.GetPosition()).magnitude * 100;
+        return (position - planet.GetPosition()).magnitude * 50;
     }
 }

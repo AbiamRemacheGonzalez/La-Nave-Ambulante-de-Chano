@@ -7,7 +7,7 @@ public class SpaceShip : MonoBehaviour
 {
     public static SpaceShip instance;
 
-    protected List<SystemBase> systems;
+    protected List<SystemBase> systems = new List<SystemBase>();
     protected float fuel = 100;
     public const int maxFuel = 100;
     public Slider fuelSlider;
@@ -51,5 +51,10 @@ public class SpaceShip : MonoBehaviour
     public void RemoveSystem(SystemBase system)
     {
         systems.Remove(system);
+    }
+
+    public List<SystemBase> GetSystems()
+    {
+        return systems;
     }
 }
