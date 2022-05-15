@@ -48,3 +48,6 @@ TagManager:
   - name: Interactable
     uniqueID: 1477381033
     locked: 0
+  - name: Events
+    uniqueID: 1530774419
+    locked: 0

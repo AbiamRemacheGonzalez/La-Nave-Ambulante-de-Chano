@@ -1,13 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class AsteriodsEvent : EventBase
 {
-
     SpaceShip spaceShip;
 
     List<SystemBase> systems;
+
+    public TextMeshProUGUI text;
+
+    public Animator anim;
 
     public override void StartEvent(NavegationController navController)
     {
@@ -19,6 +23,8 @@ public class AsteriodsEvent : EventBase
 
     protected override IEnumerator Event()
     {
+        DisplayUI();
+
         for(int i = 0; i < 30; i++)
         {
             yield return new WaitForSeconds(1);
@@ -33,6 +39,18 @@ public class AsteriodsEvent : EventBase
             }
         }
 
+        UnDisplayUI();
         EndEvent();
+    }
+
+    public void DisplayUI() {
+        text.gameObject.SetActive(true);
+        anim.gameObject.SetActive(true);
+    }
+
+    public void UnDisplayUI()
+    {
+        text.gameObject.SetActive(false);
+        anim.gameObject.SetActive(false);
     }
 }
